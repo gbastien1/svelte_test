@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import Avatar from '../shared/Avatar.component.svelte';
 	import { DateTime } from "luxon";
+	import type { Message } from './chat.model';
 
   export let isCurrentUser = false;
-  export let message;
+  export let message: Message;
 
-  const formatSentDate = (ISODate) => `${DateTime.fromISO(ISODate).toLocaleString(DateTime.DATE_FULL)} à ${DateTime.fromISO(ISODate).toLocaleString(DateTime.TIME_SIMPLE)}`;
+  const formatSentDate = (ISODate: DateTime) => `${DateTime.fromISO(ISODate).toLocaleString(DateTime.DATE_FULL)} à ${DateTime.fromISO(ISODate).toLocaleString(DateTime.TIME_SIMPLE)}`;
 </script>
 
 <div class="chat-message {isCurrentUser ? 'me' : 'them'}">
@@ -31,9 +32,6 @@
 	}
 	.chat-message.me {
 		flex-direction: row-reverse;
-	}
-	.chat-message.them {
-
 	}
 	.chat-message > * {
 		margin-left: 10px;
@@ -73,8 +71,5 @@
 	}
 	.chat-message.them .chat-message__metadata {
 		text-align: right;
-	}
-	.chat-message.me .chat-message__metadata {
-		
 	}
 </style>

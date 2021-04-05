@@ -3,14 +3,14 @@
 	import ChatComposer from './ChatComposer.component.svelte';
 	import { getConversation } from './chat.service';
 	import { sendMessage } from './chat.service';
+	import type { Message } from './chat.model';
 
-	let name = 'Chat Box';
-	let currentUserId = 1;
-	let recipientUserId = 2;
+	let currentUserId: number = 1;
+	let recipientUserId: number = 2;
 	$: conversation = getConversation();
 
 	let getRecipientProfile = () => conversation.messages.find(message => message.profile.id === recipientUserId).profile;
-	let isCurrentUser = (message) => message.profile.id === currentUserId;
+	let isCurrentUser = (message: Message) => message.profile.id === currentUserId;
 
 	const onSendMessage = ({ detail: { form } }) => {
 		const message = form.querySelector('textarea').value;

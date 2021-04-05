@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import SendIcon from '../shared/svg/SendIcon.svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
-	const onSubmit = (event) => dispatch('submit', { form: event.target });
+	const onSubmit = (event: Event) => dispatch('submit', { form: event.target });
 </script>
 
 <form class="chat__composer" on:submit|preventDefault={onSubmit}>

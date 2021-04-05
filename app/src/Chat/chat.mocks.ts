@@ -1,6 +1,7 @@
 import { loggedProfileMock, recipientProfileMock } from '../mocks/profile.mock';
+import type { ChatMessage, ChatConversation } from './chat.model';
 
-export const messagesMock = [
+export const messagesMock: ChatMessage[] = [
 	{
 		text: 'Lorem ipsum',
 		profile: loggedProfileMock,
@@ -23,7 +24,7 @@ export const messagesMock = [
 	},
 ];
 
-export const conversationMock = {
+export const conversationMock: ChatConversation = {
 	id: 123,
 	sender: loggedProfileMock,
 	recipient: recipientProfileMock,
