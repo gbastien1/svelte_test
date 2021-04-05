@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scale } from 'svelte/transition';
 	import Avatar from '../shared/Avatar.component.svelte';
 	import { DateTime } from "luxon";
 	import type { Message } from './chat.model';
@@ -9,7 +10,7 @@
   const formatSentDate = (ISODate: DateTime) => `${DateTime.fromISO(ISODate).toLocaleString(DateTime.DATE_FULL)} à ${DateTime.fromISO(ISODate).toLocaleString(DateTime.TIME_SIMPLE)}`;
 </script>
 
-<div class="chat-message {isCurrentUser ? 'me' : 'them'}">
+<div class="chat-message {isCurrentUser ? 'me' : 'them'}" in:scale="{{duration: 300, start: 0.75}}">
 	<div class="chat-message__avatar">
 		<Avatar image={'avatars/' + message.profile.id + '.jpg'} />
 	</div>
