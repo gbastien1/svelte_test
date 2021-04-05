@@ -1,5 +1,5 @@
-import { conversationMock } from './chat.mocks.js';
-import { loggedProfileMock, recipientProfileMock } from '../mocks/profile.mock.js';
+import { conversationMock } from './chat.mocks';
+import { loggedProfileMock, recipientProfileMock } from '../mocks/profile.mock';
 import { DateTime } from "luxon";
 
 export const getConversation = () => {

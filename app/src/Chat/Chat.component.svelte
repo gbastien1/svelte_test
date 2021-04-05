@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ChatMessage from './ChatMessage.component.svelte';
 	import ChatComposer from './ChatComposer.component.svelte';
-	import { getConversation } from './chat.service.js';
-	import { sendMessage } from './chat.service.js';
+	import { getConversation } from './chat.service';
+	import { sendMessage } from './chat.service';
 
 	let name = 'Chat Box';
 	let currentUserId = 1;

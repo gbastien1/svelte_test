@@ -1,4 +1,4 @@
-import { loggedProfileMock, recipientProfileMock } from '../mocks/profile.mock.js';
+import { loggedProfileMock, recipientProfileMock } from '../mocks/profile.mock';
 
 export const messagesMock = [
 	{
