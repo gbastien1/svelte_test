@@ -15,6 +15,9 @@
 		margin: 0;
 		font-family: "Open Sans", Sans Serif;
 	}
+	:global(html, html *) {
+		box-sizing: border-box;
+	}
 	:global(h1, h2, h3, h4, h5, h6) {
 		margin: 0;
 		line-height: 1.5;
