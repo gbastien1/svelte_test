@@ -5,7 +5,7 @@
   <div></div>
 </div>
 
-<style>
+<style lang="scss">
   .spinner {
     display: inline-block;
     position: relative;
@@ -22,16 +22,18 @@
     border-radius: 50%;
     animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #98CABD transparent transparent transparent;
+
+    & div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    & div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    & div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
   }
-  .spinner div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  .spinner div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .spinner div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
+  
   @keyframes spinner {
     0% {
       transform: rotate(0deg);

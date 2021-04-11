@@ -4,17 +4,22 @@
 
 	const dispatch = createEventDispatcher();
 
-	const onSubmit = (event: Event) => dispatch('submit', { form: event.target });
+	const onSubmit = (event: Event) => dispatchSubmit(event.target);
+	const onTextareaKeyUp = (event: KeyboardEvent ) => event.code === 'Enter' && dispatchSubmit((event.target as HTMLInputElement).form);
+
+	const dispatchSubmit = (form) => {
+		 dispatch('submit', { form });
+	}
 </script>
 
 <form class="chat__composer" on:submit|preventDefault={onSubmit}>
-	<textarea name="message"></textarea>
+	<textarea name="message" on:keyup={onTextareaKeyUp}></textarea>
 	<button class="button button--send" type="submit">
 		<SendIcon color="#98CABD"/>
 	</button>
 </form>
 
-<style>
+<style lang="scss">
 	.chat__composer {
 		border-top: 1px solid #E8E8E8;
 		display: flex;
@@ -25,9 +30,10 @@
 		flex-grow: 1;
 		border: 1px solid transparent;
 		border-top: 0;
-	}
-	textarea:is(:focus, :active) {
-		outline-color: #98CABD;
+
+		&:is(:focus, :active) {
+			outline-color: #98CABD;
+		}
 	}
 	.button--send {
 		width: 50px;
@@ -36,8 +42,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-	.button--send:hover {
-		background-color: #F9F9F9;
+
+		&:hover {
+			background-color: #F9F9F9;
+		}
 	}
 </style>

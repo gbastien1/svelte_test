@@ -7,7 +7,7 @@
   export let isCurrentUser = false;
   export let message: Message;
 
-  const formatSentDate = (ISODate: DateTime) => `${DateTime.fromISO(ISODate).toLocaleString(DateTime.DATE_FULL)} à ${DateTime.fromISO(ISODate).toLocaleString(DateTime.TIME_SIMPLE)}`;
+  const formatSentDate = (ISODate: string) => `${DateTime.fromISO(ISODate).toLocaleString(DateTime.DATE_FULL)} à ${DateTime.fromISO(ISODate).toLocaleString(DateTime.TIME_SIMPLE)}`;
 </script>
 
 <div class="chat-message {isCurrentUser ? 'me' : 'them'}" in:scale="{{duration: 300, start: 0.75}}">
@@ -22,20 +22,21 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.chat-message {
 		display: flex;
 		margin-left: -10px;
 		margin-bottom: 16px;
-	}
-	.chat-message:last-child {
-		margin-bottom: 0;
-	}
-	.chat-message.me {
-		flex-direction: row-reverse;
-	}
-	.chat-message > * {
-		margin-left: 10px;
+
+		> * {
+			margin-left: 10px;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&.me {
+			flex-direction: row-reverse;
+		}
 	}
 
 	.chat-message__avatar {
@@ -48,29 +49,31 @@
 		background-color: #F2F8F6;
 		border-radius: 10px;
 		padding: 12px;
-	}
-	.chat-message.them .chat-message__bubble {
-		border-top-left-radius: 0;
-	}
-	.chat-message.me .chat-message__bubble {
-		background-color: #99EBCB;
-		border-top-right-radius: 0;
-	}
-	.chat-message__bubble p {
-		font-size: 14px;
-		margin: 0;
-		color: #565656;
+
+		p {
+			font-size: 14px;
+			margin: 0;
+			color: #565656;
+		}
+		.chat-message.them & {
+			border-top-left-radius: 0;
+		}
+		.chat-message.me & {
+			border-top-right-radius: 0;
+			background-color: #99EBCB;
+		}
 	}
 
 	.chat-message__metadata {
 		flex-grow: 1;
-	}
-	.chat-message__metadata p {
-		font-size: 10px;
-		color: #9B9B9B;
-		min-width: 120px;
-	}
-	.chat-message.them .chat-message__metadata {
-		text-align: right;
+
+		p {
+			font-size: 10px;
+			color: #9B9B9B;
+			min-width: 120px;
+		}
+		.chat-message.them & {
+			text-align: right;
+		}
 	}
 </style>
